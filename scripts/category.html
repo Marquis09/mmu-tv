@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MMU TV - Category</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        .custom-yellow-bg {
+            background-color: rgb(255, 176, 0) !important; /* Ensures it overrides other styles */
+        }
+    </style>
+
 </head>
+
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-yellow-bg">
         <div class="container">
-            <a class="navbar-brand" href="#">MMU TV</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="../scripts/index.html">MMU TV</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../scripts/index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../scripts/category.html">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../scripts/category.html">Categories</a></li>
                     <li class="nav-item"><a class="nav-link" href="../scripts/signup.html">Sign Up</a></li>
                 </ul>
             </div>
@@ -26,85 +36,169 @@
     </nav>
 
     <!-- Hero Section with Video -->
-    <header class="bg-secondary text-white text-center py-5">
+    <header class="bg-dark text-white text-center py-5">
         <div class="container">
             <h1>Filmmaking Showcase</h1>
             <p>Discover creative projects from MMU students.</p>
         </div>
     </header>
 
-    <!-- Video Player Section -->
-    <section class="py-5">
+    <!-- Search Form -->
+    <section class="py-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <!-- Embedded Video Player -->
-                    <iframe width="70%" height="600" src="https://www.youtube.com/embed/HWO8_E-_UYI?si=EauZcjYPlYwGAyyd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="col-md-6 offset-md-3">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search Categories..." onkeyup="filterCategories()">
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Video Player Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <!-- Trigger Button for Modal -->
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#videoModal">
+                        Watch Featured Video
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Video Player -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Featured Video</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Embedded Video Player in Modal -->
+                    <iframe width="100%" height="500" src="https://www.youtube.com/embed/HWO8_E-_UYI?si=EauZcjYPlYwGAyyd" 
+                            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Related Videos Section -->
     <section class="py-5">
         <div class="container">
             <h2 class="text-center mb-4">Related Videos</h2>
-            <div class="row">
+            <div class="row" id="category-list">
                 <!-- Video Thumbnails -->
-                <div class="col-md-4">
+                <div class="col-md-4 col-12 category-item">
                     <div class="card">
-                        <img src="../images/categories/bed-1853907_1920.jpg" class="card-img-top" alt="Video 1">
+                        <img src="../images/categories/a.jpg" class="card-img-top" alt="image of a woman behind the camera">
                         <div class="card-body">
                             <h5 class="card-title">Student Film 1</h5>
                             <p class="card-text">A unique short film by MMU students.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-12 category-item">
                     <div class="card">
-                        <img src="../images/categories/documentary-1276188_1920.jpg" class="card-img-top" alt="Video 2">
+                        <img src="../images/categories/b.jpg" class="card-img-top" alt="black and white image of a young boy">
                         <div class="card-body">
                             <h5 class="card-title">Documentary</h5>
                             <p class="card-text">An insightful documentary on student life.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-12 category-item">
                     <div class="card">
-                        <img src="../images/categories/woman-6358110_1920.jpg" class="card-img-top" alt="Video 3">
+                        <img src="../images/categories/c.jpg" class="card-img-top" alt="image of an animated minion">
                         <div class="card-body">
                             <h5 class="card-title">Creative Animation</h5>
                             <p class="card-text">A colorful and creative animation project.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <hr>
+
+                <!-- Add more video thumbnails for diversity -->
+                <div class="col-md-4 col-12 category-item">
                     <div class="card">
-                        <img src="../images/categories/bed-1853907_1920.jpg" class="card-img-top" alt="Video 1">
+                        <img src="../images/categories/d.jpg" class="card-img-top" alt="image of a camera lense">
                         <div class="card-body">
-                            <h5 class="card-title">Student Film 1</h5>
-                            <p class="card-text">A unique short film by MMU students.</p>
+                            <h5 class="card-title">Filmmaking 101</h5>
+                            <p class="card-text">Learn the basics of filmmaking in this video.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-12 category-item">
                     <div class="card">
-                        <img src="../images/categories/documentary-1276188_1920.jpg" class="card-img-top" alt="Video 2">
+                        <img src="../images/categories/e.jpg" class="card-img-top" alt="image of a photo album">
                         <div class="card-body">
-                            <h5 class="card-title">Documentary</h5>
-                            <p class="card-text">An insightful documentary on student life.</p>
+                            <h5 class="card-title">Photography Techniques</h5>
+                            <p class="card-text">Photography tips and tricks from MMU students.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-12 category-item">
                     <div class="card">
-                        <img src="../images/categories/woman-6358110_1920.jpg" class="card-img-top" alt="Video 3">
+                        <img src="../images/categories/f.jpg" class="card-img-top" alt="image of a girl singing">
                         <div class="card-body">
-                            <h5 class="card-title">Creative Animation</h5>
-                            <p class="card-text">A colorful and creative animation project.</p>
+                            <h5 class="card-title">Acting Techniques</h5>
+                            <p class="card-text">Discover acting skills in this video from students.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
                         </div>
                     </div>
                 </div>
+                <hr>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Categories Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Explore More Categories</h2>
+            <div class="row">
+                <!-- Filmmaking Category -->
+                <div class="col-md-4 col-12 category-item">
+                    <div class="card">
+                        <img src="../images/categories/g.jpg" class="card-img-top" alt="image of a camera">
+                        <div class="card-body">
+                            <h5 class="card-title">Filmmaking</h5>
+                            <p class="card-text">Explore student films, short films, and documentaries.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Animation Category -->
+                <div class="col-md-4 col-12 category-item">
+                    <div class="card">
+                        <img src="../images/categories/h.jpg" class="card-img-top" alt="image of an animated pirate holding two swords">
+                        <div class="card-body">
+                            <h5 class="card-title">Animation</h5>
+                            <p class="card-text">Creative animation projects and animated shorts.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Acting Category -->
+                <div class="col-md-4 col-12 category-item">
+                    <div class="card">
+                        <img src="../images/categories/i.jpg" class="card-img-top" alt="image of a person behing the curtains on a stage">
+                        <div class="card-body">
+                            <h5 class="card-title">Acting</h5>
+                            <p class="card-text">Dramatic and artistic performances by students.</p>
+                            <a href="#" class="btn btn-primary">Watch Now</a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
             </div>
         </div>
     </section>
@@ -113,7 +207,9 @@
     <section class="py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-4">Our Mission</h2>
-            <p class="text-center">At MMU TV, we aim to highlight the best creative outputs from our students and staff. From innovative films to thought-provoking documentaries, our goal is to showcase and celebrate the talent within MMU.</p>
+            <p class="text-center">At MMU TV, we aim to highlight the best creative outputs from our students and staff.
+                From innovative films to thought-provoking documentaries, our goal is to showcase and celebrate the
+                talent within MMU.</p>
         </div>
     </section>
 
@@ -124,5 +220,24 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Search Functionality (JavaScript) -->
+    <script>
+        function filterCategories() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.category-item');
+
+            items.forEach(item => {
+                const title = item.querySelector('.card-title').textContent.toLowerCase();
+                if (title.includes(query)) {
+                    item.style.display = 'block'; // Show matching item
+                } else {
+                    item.style.display = 'none'; // Hide non-matching item
+                }
+            });
+        }
+    </script>
+
 </body>
+
 </html>
